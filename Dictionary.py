@@ -26,4 +26,9 @@ def retrive_definition(word):
 
 
 word_user = input("Enter a word: ")
-print(retrive_definition(word_user))
+output = retrive_definition(word_user)
+if type(output) == list:
+    for item in output:
+        print("-", item)
+else:
+    print("-", output)
