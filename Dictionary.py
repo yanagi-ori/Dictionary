@@ -1,8 +1,15 @@
 import json
 from difflib import get_close_matches
 
-
-data = json.load(open("data.json"))
+prefs = json.load(open("user_settings.json"))
+if prefs["cur"] == '':
+    lng = input("Choose ru or en language: ")
+    prefs["cur"] = lng
+    with open('user_settings.json', 'w') as f:
+        f.write(json.dumps(prefs))
+    data = json.load(open(prefs[lng]))
+else:
+    data = json.load(open(prefs[prefs["cur"]]))
 
 
 def retrive_definition(word):
