@@ -13,11 +13,19 @@ def retrive_definition(word):
     elif word.upper() in data:
         return data[word.upper()]
     elif len(get_close_matches(word, data.keys())) > 0:
-        action = input("Did you mean %s instead? [y, n]" % get_close_matches(word, data.keys())[0])
+        action = input("Did you mean %s instead? [y, n] " % get_close_matches(word, data.keys())[0])
         if action.lower() == 'y':
             return data[get_close_matches(word, data.keys())[0]]
         elif action.lower() == 'n':
-            return "The word doesn't exist, yet."
+            if len(get_close_matches(word, data.keys())[1:]) == 0:
+                return "The word doesn't exist, yet."
+            else:
+                print(len(get_close_matches(word, data.keys())))
+                print("Please, look for some other variants and type its number to choose "
+                      "or n if there is no searched word")
+                for i in range(1, len(get_close_matches(word, data.keys()))):
+                    print(i, '-', get_close_matches(word, data.keys())[i])
+                return data[get_close_matches(word, data.keys())[int(input())]]
         else:
             return "We don't understand your entry. Apologies."
 
@@ -32,3 +40,5 @@ if type(output) == list:
         print("-", item)
 else:
     print("-", output)
+
+input()
