@@ -1,1 +1,5 @@
-{"en": "data.json", "ru": "data_ru.json", "cur": "en"}
+{
+  "en": "data.json",
+  "ru": "data_ru.json",
+  "cur": "ru"
+}
