@@ -42,7 +42,7 @@ def retrive_definition(word):
 
 word_user = input("Enter a word: ")
 output = retrive_definition(word_user)
-if type(output) == list:
+if isinstance(output, list):
     for item in output:
         print("-", item)
 else:
